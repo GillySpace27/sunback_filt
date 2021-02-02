@@ -10,6 +10,9 @@ from astropy.io import fits
 import datetime
 
 from color_tables import aia_color_table
+import warnings
+warnings.filterwarnings("ignore")
+
 
 class Modify:
     renew_mask = True
@@ -49,7 +52,7 @@ class Modify:
     def test(self):
         if self.verb: print("Running Test Case")
         data = self.load_file("data/0171_MR.fits")
-        # self.show = True
+        self.show = True
         return data
 
     def load_file(self, path):
