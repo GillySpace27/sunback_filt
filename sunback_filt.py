@@ -82,8 +82,8 @@ class Modify:
     def get(self):
         return self.changed
 
-    def get_path(self):
-        return self.newPath
+    # def get_path(self):
+    #     return self.newPath
 
     def image_modify(self, data):
         """Perform the image normalization on the input array"""
@@ -884,7 +884,14 @@ def load_file(path):
     return data, image_data
 
 
+def print_banner():
+    """Prints a message at code start"""
+    print("\nSunback Web: SDO Website and Background Updater \nWritten by Chris R. Gilly")
+    print("Check out my website: http://gilly.space\n")
+
+
 def test_all(test_path="data/0171_MR.fits", show=True):
+    print_banner()
     print("\nTesting Module...")
     print("    No input method...", end='')
     test_mod = Modify(show=show)
@@ -896,7 +903,7 @@ def test_all(test_path="data/0171_MR.fits", show=True):
     data, image_data = load_file(test_path)
     test_mod3 = Modify(data, image_data, show=show)
     print("Success", flush=True)
-    print("\nAll Tests Run Successfully")
+    print("\nAll Tests Run Successfully\n")
     
     
 if __name__ == "__main__":
