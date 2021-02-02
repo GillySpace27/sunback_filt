@@ -9,18 +9,13 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-There may be some items required to use Sunback
-<!-- * Conda
-  ```sh
-  npm install npm@latest -g
-  ```
--->
+You need python 3, and Conda is probably your best bet.
+
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
+   git clone https://github.com/GillySpace27/sunback_engine.git   ```
 2. Install required packages
    ```sh
    pip install -r requirements.txt
@@ -58,11 +53,14 @@ full_name, save_path, time_string, shape = self.image_data
 ### Tasks
 To perform the analysis on a single image file:
 ```
+from sunback_filt import Modify
 input_path = "/data/171_MR.fits"
 reduced = Modify(input_path)
 ```
 To perform the analysis on a single image array:
 ```
+from sunback_filt import Modify
+input_path = "/data/171_MR.fits"
 input_file = load_file(input_path)
 reduced = Modify(input_file)
 ```
