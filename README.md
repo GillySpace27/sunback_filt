@@ -24,18 +24,6 @@ You need python 3, and Conda is probably your best bet.
    ```
    python sunback_filt.py
    ```
-   or
-   ```
-   python
-   from sunback_filt import Modify
-   Modify()
-   ```
-   or
-   ```
-   python
-   import sunback_filt as sf
-   sf.test_all()
-   ```
    
 <!-- USAGE EXAMPLES -->
 ## Usage
