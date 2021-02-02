@@ -30,11 +30,11 @@ You need python 3, and Conda is probably your best bet.
 ### Defaults
 Defaults for Modify:
 ```
+from sunback_filt import Modify
 Modify(data=None, image_data=None, orig=False, show=False, verb=False)
 ```
 Defaults for Image Data:
 ```
-self.image_data = str(wave), str(wave), t_rec, data.shape
 full_name, save_path, time_string, shape = self.image_data
 ```
 
