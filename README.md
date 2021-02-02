@@ -59,7 +59,7 @@ reduced = Modify(input_path)
 ```
 To perform the analysis on a single image array:
 ```
-from sunback_filt import Modify
+from sunback_filt import Modify, load_file
 input_path = "/data/171_MR.fits"
 input_file = load_file(input_path)
 reduced = Modify(input_file)
