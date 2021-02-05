@@ -18,7 +18,9 @@ class Modify:
     renew_mask = True
     image_data = None
     def __init__(self, data=None, image_data=None, orig=False, show=False, verb=False):
-        """Initialize a new parameter object or use the provided one"""
+        """Initialize the main class"""
+        
+        # Parse Inputs
         self.show = show
         self.image_data = image_data
         self.verb = verb
@@ -27,17 +29,22 @@ class Modify:
 
         # Run the Algorithm
         self.execute(self.data)
+        
         if self.verb: print("Done")
         
     def parse_input_data(self, data):
+        """Determine what kind of input data was provided and call the appropriate methods"""
         if data is None:
             # Run the Test Case
             self.data = self.test()
         elif type(data) in [str]:
-            # Run on Input Data
-            self.data = self.load_file(data)
-        else:
+            # Load the file at input path
+            path = data
+            self.data = self.load_file(path)
+        elif type(data) in [np.array]:
             self.data=data
+        else:
+            raise TypeError("Invalid Input Data")
             
         if self.image_data is None:
             # Use default Metadata
@@ -50,6 +57,7 @@ class Modify:
         self.plot_and_save()
         
     def test(self):
+        """Run the test case if no input is provided"""
         if self.verb: print("Running Test Case")
         data = self.load_file("data/0171_MR.fits")
         self.show = True
@@ -108,8 +116,8 @@ class Modify:
         return dat
 
     def radial_analyze(self, data, plotStats=False):
+        """Analyze the input image"""
         self.offset = np.min(data)
-
         data -= self.offset
 
         self.make_radius(data)
@@ -119,7 +127,7 @@ class Modify:
         return data
 
     def make_radius(self, data):
-
+        """Build a coordinate array of shape(data)"""
         self.rez = data.shape[0]
         centerPt = self.rez / 2
         xx, yy = np.meshgrid(np.arange(self.rez), np.arange(self.rez))
@@ -338,12 +346,13 @@ class Modify:
         # self.noise_radii = 565 * self.extra_rez
 
     def vignette(self, data):
-
+        """Truncate the data above a certain radis"""
         mask = self.radius > (int(1.1* self.rez // 2)) #(3.5 * self.noise_radii)
         data[mask] = np.nan
         return data
 
     def coronaNorm(self, data):
+        """Normalize the image"""
         data[data==0] = np.nan
 
         radius_bin = np.asarray(np.floor(self.rad_flat), dtype=np.int32)
@@ -375,7 +384,7 @@ class Modify:
         return dat_corona
 
     def coronagraph(self, data):
-
+        
         dat_corona = self.coronaNorm(data)
 
 
