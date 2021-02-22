@@ -1,6 +1,6 @@
 # Sunback_filt - The Core Algorithm Behind Sunback
 
-
+Look at the file "SUNBACK.pdf" for the paper in-progress, with much more detailed context and instructions.
 
 <!-- GETTING STARTED -->
 ## Getting Started
