@@ -29,7 +29,7 @@ class Modify:
         self.parse_input_type(image)
         
         # Run the Reduction Algorithm
-        self.image_modify() # Primary Algorithm
+        self.image_modify()  # Primary Algorithm
         self.plot_and_save()
         
         if self.verb: print("Done")
